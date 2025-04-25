@@ -1,0 +1,18 @@
+{
+  "schemaName": "website_traffic",
+  "dimensionFieldSpecs": [
+    {"name": "user_id", "dataType": "STRING"},
+    {"name": "page", "dataType": "STRING"},
+    {"name": "device", "dataType": "STRING"},
+    {"name": "country", "dataType": "STRING"},
+    {"name": "browser", "dataType": "STRING"}
+  ],
+  "dateTimeFieldSpecs": [
+    {
+      "name": "timestamp",
+      "dataType": "LONG",
+      "format": "1:MILLISECONDS:EPOCH",
+      "granularity": "1:MILLISECONDS"
+    }
+  ]
+}

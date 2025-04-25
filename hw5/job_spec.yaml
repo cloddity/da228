@@ -1,0 +1,31 @@
+executionFrameworkSpec:
+  name: 'standalone'
+  segmentGenerationJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentGenerationJobRunner'
+  segmentTarPushJobRunnerClassName: 'org.apache.pinot.plugin.ingestion.batch.standalone.SegmentTarPushJobRunner'
+
+jobType: SegmentCreation
+
+inputDirURI: 'file:///opt/pinot/data'
+
+includeFileNamePattern: 'glob:**/*.csv'
+
+outputDirURI: 'file:///opt/pinot/segments'
+
+overwriteOutput: true
+
+pinotFSSpecs:
+  - scheme: file
+    className: org.apache.pinot.spi.filesystem.LocalPinotFS
+
+recordReaderSpec:
+  dataFormat: 'csv'
+  className: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReader'
+  configClassName: 'org.apache.pinot.plugin.inputformat.csv.CSVRecordReaderConfig'
+
+tableSpec:
+  tableName: 'website_traffic_OFFLINE'
+  schemaURI: 'http://192.168.255.141:9000/schemas/website_traffic'
+  tableConfigURI: 'http://192.168.255.141:9000/tables/website_traffic_OFFLINE'
+
+pinotClusterSpecs:
+  - controllerURI: 'http://192.168.255.141:9000'

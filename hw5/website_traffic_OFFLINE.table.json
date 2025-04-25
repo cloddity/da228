@@ -1,0 +1,37 @@
+{
+  "tableName": "website_traffic_OFFLINE",
+  "tableType": "OFFLINE",
+  "routing": {
+    "segmentPrunerTypes": [
+      "time"
+    ],
+    "instanceSelectorType": "balanced"
+  },
+  "segmentsConfig": {
+    "timeColumnName": "timestamp",
+    "timeType": "MILLISECONDS",
+    "replication": "1",
+    "retentionTimeUnit": "DAYS",
+    "retentionTimeValue": "7"
+  },
+  "tableIndexConfig": {
+    "invertedIndexColumns": [
+      "user_id",
+      "page",
+      "device",
+      "browser",
+      "country"
+    ],
+    "sortedColumn": [
+      "timestamp"
+    ],
+    "loadMode": "MMAP",
+    "createInvertedIndexDuringSegmentGeneration": false
+  },
+  "ingestionConfig": {
+    "batchIngestionConfig": {
+      "segmentIngestionType": "APPEND",
+      "segmentIngestionFrequency": "DAILY"
+    }
+  }
+}
